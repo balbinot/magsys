@@ -69,8 +69,6 @@ class Magellanic(coord.BaseCoordinateFrame):
     frame_specific_representation_info[coord.UnitSphericalDifferential] = \
         frame_specific_representation_info[coord.SphericalDifferential]
 
-from sys import argv
-
 #Poles at (l,b) = 188.5, -7.5
 
 MAG_PHI = (180-188.5) * u.degree
