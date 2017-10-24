@@ -1,12 +1,7 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 """
-==========================================================
-Create a new coordinate class (for the Magellanic stream)
-==========================================================
-
 -------------------
-
 *Adapted by Eduardo Balbinot (eduardo.balbinot@gmail.com)
 
 *Using the IDL scripts found here*
@@ -16,32 +11,13 @@ https://github.com/bsmartforever/wham/tree/master/PRO/Nidever/mag2gal
 http://docs.astropy.org/en/stable/generated/examples/coordinates/plot_sgr-coordinate-frame.html
 
 *License: BSD*
-
 -------------------
-
 """
-
-##############################################################################
-# Make `print` work the same in all versions of Python, set up numpy,
-# matplotlib, and use a nicer set of plot parameters:
-
-import numpy as np
-import matplotlib.pyplot as plt
-from astropy.visualization import astropy_mpl_style
-plt.style.use(astropy_mpl_style)
-
-##############################################################################
-# Import the packages necessary for coordinates
 
 from astropy.coordinates import frame_transform_graph
 from astropy.coordinates.matrix_utilities import rotation_matrix, matrix_product, matrix_transpose
 import astropy.coordinates as coord
 import astropy.units as u
-
-##############################################################################
-# The first step is to create a new class, which we'll call
-# ``Sagittarius`` and make it a subclass of
-# `~astropy.coordinates.BaseCoordinateFrame`:
 
 class Magellanic(coord.BaseCoordinateFrame):
     """
