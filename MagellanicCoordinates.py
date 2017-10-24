@@ -121,35 +121,3 @@ def magellanic_to_galactic():
         coordinates to spherical Galactic.
     """
     return matrix_transpose(MAG_MATRIX)
-
-
-if __name__=='__main__':
-    mag = Magellanic(Lambda=0*u.deg, Beta=0*u.deg)
-    icrs = mag.transform_to(coord.ICRS)
-    gal = mag.transform_to(coord.Galactic)
-
-    gall0, galb0 = gal.l.deg, gal.b.deg
-
-    print "Magellanic (%.4f, %.4f) = ICRS (%.4f, %.4f) = Galactic (%.4f, %.4f)" % (mag.Lambda.deg, mag.Beta.deg, icrs.ra.deg, icrs.dec.deg, gal.l.deg, gal.b.deg)
-
-    mag = Magellanic(Lambda=np.linspace(-2*np.pi, 2*np.pi, 256)*u.radian,
-                      Beta=np.zeros(256)*u.radian)
-    gal = mag.transform_to(coord.Galactic)
-    icrs = mag.transform_to(coord.ICRS)
-
-    fig, axes = plt.subplots(2, 1, figsize=(8, 10))
-
-    axes[0].set_title("Magellanic")
-    axes[0].plot(mag.Lambda.wrap_at(180*u.deg).deg, mag.Beta.deg,
-                 linestyle='none', marker='.')
-
-    axes[1].set_title("Galactic")
-    axes[1].plot(gal.l.deg, gal.b.deg, ls='none',
-                 marker='.')
-
-    axes[1].plot(gall0, galb0, 'ro', ms=8)
-    axes[1].set_xlim(360,0)
-    axes[1].axhline(-32.75)
-
-    plt.show()
-
